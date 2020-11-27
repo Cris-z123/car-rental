@@ -22,7 +22,7 @@ export default {
       events: {},
     }
   },
-  mounted(){
+  mounted() {
     lazyAMapApiLoaderInstance.load().then(() => {
       this.map = new AMap.Map('amapContainer', {
         center: [116.404765, 39.918052],
