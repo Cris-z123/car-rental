@@ -1,17 +1,36 @@
 <template>
   <div class="cars-wrap">
-    <div class="cars-list"></div>
+    <swiper class="swiper" :options="swiperOption">
+      <swiper-slide><car-card /></swiper-slide>
+      <swiper-slide><car-card /></swiper-slide>
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/swiper-bundle.css";
+import carCard from '@c/carsList/carCard';
 
 export default {
   name: "Cars",
+  components: {
+    Swiper,
+    SwiperSlide,
+    carCard
+  },
   data() {
     return {
+      swiperOption: {
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+      }
     }
-  },
+  }
 }
 </script>
 
@@ -22,12 +41,5 @@ export default {
   bottom: 94px;
   right: 0;
   z-index: 11;
-  .cars-list {
-    width: 505px;
-    height: 257px;
-    background: #fff;
-    border-radius: 23px;
-    box-shadow: 0 0 18px 0 rgba(0, 0, 0, .2);
-  }
 }
 </style>
